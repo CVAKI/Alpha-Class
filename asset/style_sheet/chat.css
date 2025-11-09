@@ -1,0 +1,126 @@
+body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #000000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .chat-container {
+      background: #fff;
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #150b5c, #0269a0);
+      color: white;
+      padding: 16px;
+      font-size: 1.2em;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #logoutBtn {
+      background: white;
+      color: #13025d;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #nextBtn {
+      background: white;
+      color: #0f0462;
+      border: none;
+      border-radius: 20px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .chat-box {
+      flex: 1;
+      background-color: #667198;
+      padding: 10px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    
+
+    .system {
+      text-align: center;
+      color: #999;
+      font-size: 0.9em;
+      margin: 10px 0;
+    }
+
+    .chat-form {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #dddddd;
+      background: #fff;
+    }
+
+    #msgInput {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #0c0447;
+      border-radius: 20px;
+      outline: none;
+    }
+
+    #sendBtn {
+      margin-left: 10px;
+      padding: 10px 16px;
+      background-color: #04054f;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+
+ .message {
+  max-width: 50%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  line-height: 1.4;
+  font-size: 14.5px;
+  margin: 5px 0; /* Add vertical space between messages */
+}
+
+/* User's own messages */
+.message.mine {
+  background: linear-gradient(135deg, #0109b4, #e4ddff);
+  color: #222;
+  align-self: flex-end;
+  border-bottom-right-radius: 1px;
+}
+
+/* Stranger's messages */
+.message.theirs {
+  background: linear-gradient(135deg, #0e0d0d, #310ec0);
+  color: #ffffff;
+  align-self: flex-start;
+  border-bottom-left-radius: 1px;
+}
+.message.system {
+  text-align: center;
+  color: #aaa;
+  font-style: italic;
+  margin: 10px 0;
+}

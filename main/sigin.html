@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOG-IN | SIGN-IN</title>
+    <link rel="stylesheet" href="../asset/style_sheet/_signin.css">
+    <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="wrapper">
+    <form  method="POST" onsubmit="return false;" action="../backend/_signin.php">
+        <h1>Login</h1>
+        <div class="input-box"> 
+            <input type="text" name="email" id="emailInput" placeholder="Enter your gmail" required>
+            <span id="emailError" style="color:red;  font-family: poppins,sans-serif ;
+"></span>
+            <i class="bxr bxs-user bx-beat "></i><br>
+        </div>
+        <div class="input-box">
+            <input type="password" name="password" placeholder="Enter your password" required>
+            <i class='bxr  bxs-lock'  ></i><br> 
+        </div>
+        <div class="remember-me">
+            <label><input type="checkbox">remember me?</label>
+            <a href="#">Forgot password?</a>
+        </div>
+        <button type="button" class="btn" id="loginBtn">Login</button>
+        <div class="register_link">
+            <p>Don't have an account? <a href="../main/signup.html">Register</a></p>
+        </div>
+            
+    </form>
+    </div>
+    <script src="../asset/script/signin.js"></script>
+</body>
+</html>

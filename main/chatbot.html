@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Alpha-Class AI Assistant</title>
+    <link rel="stylesheet" href="../asset/style_sheet/_chatbot.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="status-indicator"></div>
+            <h2>🤖 Alpha-Class AI Assistant</h2>
+            <p>Here to help with your studies</p>
+        </div>
+        
+        <div class="chat-box" id="chat-box">
+            <div class="welcome-message">
+                <h3>👋 Welcome!</h3>
+                <p>I'm your AI study assistant. Ask me anything about your courses, assignments, or need help with academic topics!</p>
+            </div>
+        </div>
+        
+        <div class="typing-indicator" id="typing-indicator">
+            <div class="typing-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="chat-input-container">
+            <form id="chat-form">
+                <input type="text" id="user-input" placeholder="Type your message..." autocomplete="off">
+                <button type="submit" class="send-button" id="send-button">
+                    <svg fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"></path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="../asset/script/_chatbot.js"></script>
+</body>
+</html>
