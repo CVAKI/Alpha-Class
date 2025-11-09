@@ -1,0 +1,556 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #1e40af 100%);
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Animated background particles */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
+    animation: backgroundShift 15s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4),
+                0 0 100px rgba(59, 130, 246, 0.1);
+    position: relative;
+    z-index: 1;
+    animation: containerFadeIn 0.8s ease-out;
+    border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+@keyframes containerFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, #3b82f6, #1e40af, #1e3a8a) 1;
+    animation: slideDown 0.6s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header h1 {
+    color: #0f172a;
+    font-size: 2em;
+    font-weight: 700;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+}
+
+.back-btn {
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.back-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.back-btn:hover::before {
+    left: 100%;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.5);
+}
+
+.back-btn:active {
+    transform: translateY(-1px);
+}
+
+.semester-info {
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    text-align: center;
+    box-shadow: 0 10px 40px rgba(30, 64, 175, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+    position: relative;
+    overflow: hidden;
+}
+
+.semester-info::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    animation: rotateGradient 10s linear infinite;
+}
+
+@keyframes rotateGradient {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.semester-info h2 {
+    font-size: 1.8em;
+    margin-bottom: 12px;
+    font-weight: 700;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.semester-info p {
+    font-size: 1.05em;
+    opacity: 0.95;
+    position: relative;
+    z-index: 1;
+}
+
+.subjects-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.subject-badge {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 0.9em;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease-out both;
+}
+
+.subject-badge:nth-child(odd) {
+    animation-delay: 0.1s;
+}
+
+.subject-badge:nth-child(even) {
+    animation-delay: 0.2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.subject-badge:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.student-section {
+    margin-bottom: 40px;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    animation: fadeInUp 0.6s ease-out both;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.student-section:hover {
+    box-shadow: 0 8px 30px rgba(30, 64, 175, 0.15);
+    transform: translateY(-2px);
+}
+
+.student-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+    color: white;
+    padding: 25px 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.student-header::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.student-pic {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 4px solid rgba(59, 130, 246, 0.5);
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.student-pic:hover {
+    transform: scale(1.1);
+    border-color: #3b82f6;
+}
+
+.student-info {
+    position: relative;
+    z-index: 1;
+}
+
+.student-info h3 {
+    font-size: 1.4em;
+    margin-bottom: 5px;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.student-info p {
+    opacity: 0.9;
+    font-size: 0.95em;
+}
+
+.marks-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.marks-table thead {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.marks-table th {
+    padding: 18px 15px;
+    text-align: left;
+    font-weight: 700;
+    color: #0f172a;
+    border-bottom: 2px solid #cbd5e1;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.marks-table td {
+    padding: 15px;
+    border-bottom: 1px solid #e2e8f0;
+    transition: background 0.3s ease;
+}
+
+.marks-table tbody tr {
+    transition: all 0.3s ease;
+}
+
+.marks-table tbody tr:hover {
+    background: linear-gradient(90deg, #f1f5f9 0%, #f8fafc 100%);
+    transform: scale(1.01);
+}
+
+.mark-input {
+    width: 90px;
+    padding: 10px;
+    border: 2px solid #cbd5e1;
+    border-radius: 10px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    background: white;
+    color: #0f172a;
+}
+
+.mark-input:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+    transform: scale(1.05);
+}
+
+.mark-input:hover {
+    border-color: #1e40af;
+}
+
+.grade-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    animation: popIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes popIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.grade-S { background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%); color: white; }
+.grade-A-plus { background: linear-gradient(135deg, #059669 0%, #10b981 100%); color: white; }
+.grade-A { background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%); color: white; }
+.grade-B-plus { background: linear-gradient(135deg, #65a30d 0%, #84cc16 100%); color: white; }
+.grade-B { background: linear-gradient(135deg, #ca8a04 0%, #eab308 100%); color: white; }
+.grade-C { background: linear-gradient(135deg, #ea580c 0%, #f97316 100%); color: white; }
+.grade-D { background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%); color: white; }
+.grade-F { background: linear-gradient(135deg, #991b1b 0%, #dc2626 100%); color: white; }
+
+.save-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.9em;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.save-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.save-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.save-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(30, 64, 175, 0.4);
+}
+
+.save-btn:active {
+    transform: translateY(-1px);
+}
+
+.message {
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    animation: slideDown 0.5s ease-out;
+}
+
+.message.success {
+    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+    color: #065f46;
+    border-left: 4px solid #10b981;
+}
+
+.message.error {
+    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+    color: #991b1b;
+    border-left: 4px solid #ef4444;
+}
+
+.no-data {
+    text-align: center;
+    padding: 60px 20px;
+    color: #64748b;
+    font-size: 1.2em;
+    font-weight: 500;
+    animation: fadeIn 0.8s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .container {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .header h1 {
+        font-size: 1.5em;
+    }
+
+    .semester-info {
+        padding: 20px;
+    }
+
+    .semester-info h2 {
+        font-size: 1.3em;
+    }
+
+    .marks-table {
+        font-size: 0.85em;
+        display: block;
+        overflow-x: auto;
+    }
+
+    .mark-input {
+        width: 70px;
+        padding: 8px;
+    }
+
+    .student-header {
+        padding: 20px;
+    }
+
+    .student-pic {
+        width: 60px;
+        height: 60px;
+    }
+
+    .save-btn {
+        padding: 10px 18px;
+        font-size: 0.85em;
+    }
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 1.3em;
+    }
+
+    .back-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .subject-badge {
+        font-size: 0.8em;
+        padding: 8px 14px;
+    }
+}

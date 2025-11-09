@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Class Management</title>
+    <link rel="stylesheet" href="admin/adminmain.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Class Management System</h1>
+            <p>Admin Dashboard</p>
+        </header>
+
+        <!-- Reference Code Form -->
+        <div class="form-section">
+            <h2>Add/Edit Reference Code</h2>
+            <form id="referenceForm">
+                <input type="hidden" id="editId" name="editId">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="referencecode">Reference Code *</label>
+                        <input type="text" id="referencecode" name="referencecode" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="class">Class *</label>
+                        <input type="text" id="class" name="class" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="department">Department *</label>
+                        <input type="text" id="department" name="department" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="class_teacher">Class Teacher *</label>
+                        <input type="text" id="class_teacher" name="class_teacher" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="total_strength">Total Strength *</label>
+                        <input type="number" id="total_strength" name="total_strength" required min="1">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="total_subjects_in_all_sem">Total Subjects (All Semesters) *</label>
+                        <input type="number" id="total_subjects_in_all_sem" name="total_subjects_in_all_sem" required min="1">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="currentSem">Current Semester *</label>
+                        <input type="number" id="currentSem" name="currentSem" required min="1" max="12">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="starting_year">Starting Year *</label>
+                        <input type="number" id="starting_year" name="starting_year" required min="2000" max="2100">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="ending_year">Ending Year *</label>
+                        <input type="number" id="ending_year" name="ending_year" required min="2000" max="2100">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Save Reference Code</button>
+                    <button type="button" class="btn btn-secondary" id="cancelBtn" style="display:none;">Cancel Edit</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Reference Codes Table -->
+        <div class="table-section">
+            <h2>Existing Reference Codes</h2>
+            <div class="table-wrapper">
+                <table id="referenceTable">
+                    <thead>
+                        <tr>
+                            <th>Reference Code</th>
+                            <th>Class</th>
+                            <th>Department</th>
+                            <th>Class Teacher</th>
+                            <th>Strength</th>
+                            <th>Total Subjects</th>
+                            <th>Current Sem</th>
+                            <th>Year</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="referenceTableBody">
+                        <!-- Data will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Subject Management Modal -->
+        <div id="subjectModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Manage Subjects</h2>
+                <div id="subjectModalContent">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Message Display -->
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="admin/adminmain.js"></script>
+</body>
+</html>

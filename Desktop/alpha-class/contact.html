@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Alpha-Class</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #000000;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Grid */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(90deg, rgba(0, 51, 102, 0.1) 1px, transparent 1px),
+                linear-gradient(rgba(0, 51, 102, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* Gradient Overlay */
+        .gradient-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 51, 102, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 102, 204, 0.2) 0%, transparent 50%);
+            z-index: 1;
+            animation: gradientShift 15s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Floating Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.4;
+            z-index: 2;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .orb1 {
+            width: 400px;
+            height: 400px;
+            background: #003366;
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .orb2 {
+            width: 300px;
+            height: 300px;
+            background: #0066cc;
+            bottom: -50px;
+            right: -50px;
+            animation-delay: 7s;
+        }
+
+        .orb3 {
+            width: 250px;
+            height: 250px;
+            background: #004080;
+            top: 50%;
+            right: 10%;
+            animation-delay: 14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -50px) scale(1.1); }
+            66% { transform: translate(-50px, 50px) scale(0.9); }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            width: 100%;
+            background: rgba(10, 10, 20, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(0, 102, 204, 0.2);
+            box-shadow: 0 25px 80px rgba(0, 102, 204, 0.15);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #001a33 0%, #003366 50%, #004080 100%);
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 102, 204, 0.1), 
+                transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #66b3ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Content */
+        .content {
+            padding: 60px 40px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, rgba(0, 26, 51, 0.6) 0%, rgba(0, 51, 102, 0.4) 100%);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 102, 204, 0.3);
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.8s ease-out backwards;
+        }
+
+        .contact-card:nth-child(1) { animation-delay: 0.3s; }
+        .contact-card:nth-child(2) { animation-delay: 0.5s; }
+        .contact-card:nth-child(3) { animation-delay: 0.7s; }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(0, 102, 204, 0.2), 
+                transparent);
+            transition: left 0.6s;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(0, 153, 255, 0.6);
+            box-shadow: 0 20px 50px rgba(0, 102, 204, 0.3);
+            background: linear-gradient(135deg, rgba(0, 51, 102, 0.8) 0%, rgba(0, 102, 204, 0.6) 100%);
+        }
+
+        .contact-icon {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #003366 0%, #0066cc 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2em;
+            color: #ffffff;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.4);
+        }
+
+        .contact-card:hover .contact-icon {
+            transform: rotateY(360deg) scale(1.1);
+            box-shadow: 0 15px 40px rgba(0, 153, 255, 0.5);
+        }
+
+        .contact-card h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+
+        .contact-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95em;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* LinkedIn Section */
+        .linkedin-main {
+            background: linear-gradient(135deg, #001a33 0%, #003366 100%);
+            padding: 50px 40px;
+            border-radius: 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 102, 204, 0.3);
+            animation: slideIn 1s ease-out 0.9s both;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .linkedin-main::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 102, 204, 0.15) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .linkedin-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .linkedin-icon {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5em;
+            color: #ffffff;
+            animation: bounceIn 1s ease-out 1.1s both;
+            box-shadow: 0 15px 50px rgba(0, 102, 204, 0.5);
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0) rotate(-180deg); }
+            50% { transform: scale(1.2) rotate(10deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        .linkedin-main h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #ffffff 0%, #66b3ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .linkedin-main p {
+            font-size: 1.1em;
+            margin-bottom: 35px;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        .linkedin-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
+            color: #ffffff;
+            padding: 18px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 35px rgba(0, 102, 204, 0.4);
+            animation: slideUp 1s ease-out 1.3s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .linkedin-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .linkedin-btn:hover::before {
+            left: 100%;
+        }
+
+        .linkedin-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(0, 153, 255, 0.6);
+        }
+
+        .linkedin-btn i {
+            font-size: 1.3em;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 30px;
+            padding: 14px 30px;
+            background: rgba(0, 51, 102, 0.4);
+            color: #66b3ff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 1px solid rgba(0, 102, 204, 0.3);
+            transition: all 0.3s ease;
+            animation: fadeIn 1s ease-out 1.5s both;
+        }
+
+        .back-btn:hover {
+            background: rgba(0, 102, 204, 0.6);
+            color: #ffffff;
+            border-color: rgba(0, 153, 255, 0.6);
+            transform: translateX(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 30px;
+            }
+
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .header p {
+                font-size: 1em;
+            }
+
+            .content {
+                padding: 40px 25px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .linkedin-main {
+                padding: 40px 25px;
+            }
+
+            .linkedin-main h2 {
+                font-size: 1.8em;
+            }
+
+            .linkedin-btn {
+                padding: 16px 35px;
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .contact-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8em;
+            }
+
+            .linkedin-icon {
+                width: 90px;
+                height: 90px;
+                font-size: 2.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    <div class="gradient-overlay"></div>
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="header-content">
+                <h1>Get In Touch</h1>
+                <p>Let's connect and build something amazing together</p>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>Have a question? Drop us an email and we'll get back to you shortly.</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Alpha-Class</h3>
+                    <p>Smart student portal designed for modern education and seamless learning.</p>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Built by CVAKI</h3>
+                    <p>Crafted with passion and dedication to enhance your learning experience.</p>
+                </div>
+            </div>
+
+            <div class="linkedin-main">
+                <div class="linkedin-content">
+                    <div class="linkedin-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <h2>Connect on LinkedIn</h2>
+                    <p>Let's network and explore opportunities together. Feel free to connect with me professionally!</p>
+                    <a href="https://linkedin.com/in/cvaki-" target="_blank" rel="noopener noreferrer" class="linkedin-btn">
+                        <i class="fab fa-linkedin"></i>
+                        Visit My LinkedIn Profile
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <br>
+                    <a href="index.html" class="back-btn">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add click animation to contact cards
+        document.querySelectorAll('.contact-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Add ripple effect to LinkedIn button
+        document.querySelector('.linkedin-btn').addEventListener('click', function(e) {
+            const ripple = document.createElement('span');
+            ripple.style.cssText = `
+                position: absolute;
+                width: 10px;
+                height: 10px;
+                background: rgba(255, 255, 255, 0.6);
+                border-radius: 50%;
+                animation: ripple 0.8s ease-out;
+                pointer-events: none;
+            `;
+            
+            const rect = this.getBoundingClientRect();
+            ripple.style.left = (e.clientX - rect.left) + 'px';
+            ripple.style.top = (e.clientY - rect.top) + 'px';
+            
+            this.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 800);
+        });
+
+        // Add ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    width: 120px;
+                    height: 120px;
+                    opacity: 0;
+                    transform: translate(-50%, -50%);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Parallax effect for orbs on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.orb');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            orbs.forEach((orb, index) => {
+                const speed = (index + 1) * 20;
+                orb.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>

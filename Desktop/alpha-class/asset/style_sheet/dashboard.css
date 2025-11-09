@@ -1,0 +1,201 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #f4f6fc;
+    color: #333;
+}
+
+.dashboard {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 220px;
+    background: #12015b;
+    color: white;
+    padding: 30px 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.sidebar ul li a:hover {
+    padding-left: 10px;
+}
+
+.content {
+    flex: 1;
+    padding: 40px;
+    overflow-y: auto;
+}
+
+.section {
+    margin-bottom: 50px;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.4s ease;
+}
+
+.section:hover {
+    transform: scale(1.02);
+}
+
+h1, h2 {
+    margin-top: 0;
+}
+
+/* ===== Profile Section ===== */
+.highlight {
+    font-size: 24px;
+    color: #110000;
+}
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    background: #080869;
+    padding: 20px;
+    border-radius: 120px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    margin: 50px auto;
+    gap: 20px;
+    transform: translateY(10px);
+    transition: all 0.5s ease-in-out;
+    margin-bottom: 20px;
+}
+
+.profile-section {
+    margin-bottom: 10px;
+    background: rgb(36, 5, 95);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.4s ease;
+}
+
+.whiteclr {
+    padding: 5px;
+    color: #ffffff;
+}
+
+.profile-pic img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 5px solid #ffffff;
+    object-fit: cover;
+}
+
+.profile-info h3 {
+    margin: 0 0 10px;
+    font-size: 24px;
+    color: #333;
+}
+
+.profile-info p {
+    margin: 2px 0;
+    font-size: 16px;
+    color: #fffefe;
+}
+
+.profile-second-layer {
+    padding: 60px;
+    background-image: url(../img/dashboard/pslayer.gif);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 25px;
+}
+
+.profile-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.profile-name {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.profile-name h2 {
+    margin: 0;
+    font-size: 45px;
+    color: #ffffff;
+}
+
+.profile-buttons {
+    display: flex;
+    gap: 15px;
+    margin-left: auto;
+}
+
+.profile-btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.edit-btn {
+    background: linear-gradient(135deg, #4630ed 0%, #000000 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.edit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.chatbot-btn {
+    background: linear-gradient(135deg, #2e2ef2 0%, #080001 100%);
+    color: white;
+    box-shadow: 0 4px 15px rgba(240, 147, 251, 0.3);
+}
+
+.chatbot-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(240, 147, 251, 0.4);
+}
+
+.email-role {
+    padding: 10px;
+    color: #ffffff;
+}
+
+/* Button Icons */
+.btn-icon {
+    width: 16px;
+    height: 16px;
+}

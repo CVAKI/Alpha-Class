@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>TalkSpirit - Chat</title>
+  <link rel="stylesheet" href="../asset/style_sheet/chat.css" />
+</head>
+
+<body>
+    <div class="chat-container">
+          <header class="chat-header">
+                <div class="logo"> ALPHA-CHAT 💬</div>
+                <button id="nextBtn">Next Chat</button>
+                <button id="logoutBtn"onclick="window.location.href='../dashboard/studentMain.php'">Back</button>
+          </header> 
+          <div class="chat-box" id="chatBox"></div>
+          <div id="chatForm" class="chat-form">
+                <input type="text" id="msgInput" placeholder="Type a message..." />
+                <button id="sendBtn">Send</button>
+            </div>
+    </div>
+  <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+  <script type="module">
+    const socket = io("http://localhost:5000");
+    const chatBox = document.getElementById("chatBox");
+    const msgInput = document.getElementById("msgInput");
+    const sendBtn = document.getElementById("sendBtn");
+
+    let room = "";
+
+  function appendMessage(text, mine = false) {
+  const div = document.createElement("div");
+  div.className = "message " + (mine ? "mine" : "theirs");
+  div.textContent = text;
+  chatBox.appendChild(div);
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+    socket.on("waiting", () => {
+      appendMessage("Waiting for a friend...");
+    });
+
+    socket.on("match", (data) => {
+      room = data.room;
+      appendMessage("hello my friend...");
+    });
+
+
+    socket.on("message", (text) => {
+      appendMessage(text);
+    });
+
+   socket.on("partner-left", () => {
+  const systemMessage = document.createElement("div");
+  systemMessage.classList.add("message", "system");
+  systemMessage.textContent = "🔕 Your chat partner has left.";
+  chat.appendChild(systemMessage);
+});
+
+
+    sendBtn.onclick = () => {
+      const text = msgInput.value;
+      if (text.trim()) {
+        appendMessage(text, true);
+        socket.emit("message", { room, text });
+        msgInput.value = "";
+      }
+    };
+       nextBtn.onclick = () => {
+      socket.disconnect();
+      location.reload();
+    };
+  </script>
+</body>
+</html>
