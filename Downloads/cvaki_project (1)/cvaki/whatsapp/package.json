@@ -1,0 +1,17 @@
+{
+  "name": "cvaki-whatsapp-bridge",
+  "version": "1.0.0",
+  "description": "CVAKI WhatsApp bridge - connects CVAKI AI to WhatsApp",
+  "main": "bridge.js",
+  "scripts": {
+    "start": "node bridge.js",
+    "bridge": "node bridge.js"
+  },
+  "dependencies": {
+    "whatsapp-web.js": "^1.23.0",
+    "qrcode-terminal": "^0.12.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
